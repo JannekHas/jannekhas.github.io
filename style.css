@@ -30,3 +30,44 @@ div div:nth-child(even) {
 .test {
     color: deeppink;
 }
+[type] {
+    border: none;
+}
+[type="submit"] {
+    background-color: purple;
+}
+p::first-letter {
+    background-color: lightpink;
+}
+p::after {
+    content: "Etwas extra Text";
+    color: red;
+}
+div:first-child {
+    background-color: lime;
+}
+div:last-of-type {
+    background-color: darkgreen;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
