@@ -1,0 +1,32 @@
+* {
+    background-color: lightgray;
+}
+h1 {
+    font-size: 40px;
+    color: aquamarine;
+}
+h2, h3 {
+    color: red;
+    background-color: beige;
+}
+div {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+}
+div div {
+    width: 33.333%;
+    height: 100px;
+    background-color: #282C34;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div div:nth-child(even) {
+    background-color: #fff;
+    color: #282C34;
+}
+.test {
+    color: deeppink;
+}
