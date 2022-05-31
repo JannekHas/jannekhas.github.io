@@ -10,7 +10,7 @@ footer {
     text-align: center;
 }
 .logo,img {
-    height: 80%;
+    height: 100%;
     float: left;
 }
 html,body {
@@ -21,7 +21,7 @@ html,body {
 }
 header {
     background-color: darkgray;
-    height: 20%;
+    height: 15%;
 }
 h1 {
     font-size: 60px;
