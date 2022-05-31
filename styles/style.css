@@ -43,3 +43,9 @@ body {
 .space {
     height: 200px;
 }
+textarea {
+    background-color: #344e41;
+}
+button {
+    background-color: #344e41;
+}
