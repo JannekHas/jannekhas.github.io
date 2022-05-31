@@ -1,9 +1,43 @@
+@keyframes  changeColor {
+    from {
+        color: yellow;
+    } to {
+    color: greenyellow;
+          }
+}
 * {
     background-color: lightgray;
 }
 h1 {
-    font-size: 40px;
+    font-size: 70px;
     color: aquamarine;
+    font-weight: 600;
+    font-family: monospace;
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-shadow: 2px 2px yellow;
+    text-align: center;
+    letter-spacing: 12px;
+    padding: 20px;
+    margin: 20px;
+    border: solid 2px red;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 20px dimgray;
+    background-color: white;
+    background-image: url("https://img.freepik.com/vektoren-kostenlos/handgemalter-aquarellpastellhimmelhintergrund_23-2148902771.jpg?w=2000");
+    background-size: contain;
+    float: left;
+    position: relative;
+    display: block;
+    height: 85px;
+    overflow: hidden;
+    visibility: visible;
+    transform: scaleY(1);
+    transition: transform 1s ease;
+    animation: changeColor 1s infinite;
+}
+h1:hover {
+    transform: scaleY(2);
 }
 h2, h3 {
     color: red;
