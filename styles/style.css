@@ -9,11 +9,10 @@ footer {
     padding: 1%;
     text-align: center;
 }
-.logo {
+.logo,img {
+    height: 100%;
     float: left;
-    height: 80%;
-    margin: auto;
-    padding: 0;
+
 }
 html,body {
     width: 100%;
