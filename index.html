@@ -1,341 +1,271 @@
 <!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Jannek Haserick</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Minecraft Developer Portfolio" />
-	<meta name="keywords" content="jannek, haserick, jannek haserick, minecraft, developer, java, spigot, plugin" />
-	<meta name="author" content="Jannek Haserick" />
-
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-
-	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
-
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-
+		<title>Datalogger</title>
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body>
-		
-	<div class="fh5co-loader"></div>
-	
-	<div id="page">	
-	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							<div class="profile-thumb" style="background: url(images/user-3.jpg);"></div>
-							<h1><span>Jannek Haserick</span></h1>
-							<h3><span>Minecraft Developer</span></h3>
-							<p>
-								<ul class="fh5co-social-icons">
-									<li><a href="https://discord.com/users/382273854749409282"><i class="icon-user-plus"></i></a></li>
-								</ul>
-							</p>
-						</div>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1>Datalogger</h1>
+						<p>Datenspeicherung von Jannek</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<section id="ubersicht" class="main special">
+							<header class="major">
+								<h2>Übersicht</h2>
+							</header>
+							<div style="display: flex; justify-content: center; gap: 0 300px; flex-wrap: wrap;">
+								<div style="min-width: 150px; text-align: center;">
+									<h3 id="temp-value2">-- °C</h3>
+									<p id="temp-updated2">Aktualisiert: --</p>
+								</div>
+								<div style="min-width: 150px; text-align: center;">
+									<h3 id="hum-value2">-- %</h3>
+									<p id="hum-updated2">Aktualisiert: --</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- Introduction -->
+							<section id="intro" class="main special">
+								<header class="major">
+									<h2>Temperatur</h2>
+								</header>
+								<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+									<!-- Aktueller Wert -->
+									<div style="flex: 1; min-width: 200px;">
+										<h3 id="temp-value">-- °C</h3>
+										<p id="temp-updated">Aktualisiert: --</p>
+									</div>
+
+									<!-- Graph -->
+									<div style="flex: 2; min-width: 300px;">
+										<canvas id="tempChart" width="400" height="200"></canvas>
+										<div style="margin-top: 10px;">
+											<button onclick="loadTempChart(120)">1h</button>
+											<button onclick="loadTempChart(2880)">24h</button>
+											<button onclick="loadTempChart(20160)">7d</button>
+											<button onclick="loadTempChart(86400)">30d</button>
+											<button onclick="loadTempChart(1051200)">1y</button>
+										</div>
+									</div>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Relative Luftfeuchtigkeit</h2>
+								</header>
+								<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+									<!-- Aktueller Wert -->
+									<div style="flex: 1; min-width: 200px;">
+										<h3 id="hum-value">-- %</h3>
+										<p id="hum-updated">Aktualisiert: --</p>
+									</div>
+
+									<!-- Graph -->
+									<div style="flex: 2; min-width: 300px;">
+										<canvas id="humChart" width="400" height="200"></canvas>
+										<div style="margin-top: 10px;">
+											<button onclick="loadHumChart(120)">1h</button>
+											<button onclick="loadHumChart(2880)">24h</button>
+											<button onclick="loadHumChart(20160)">7d</button>
+											<button onclick="loadHumChart(86400)">30d</button>
+											<button onclick="loadHumChart(1051200)">1y</button>
+										</div>
+									</div>
+								</div>
+							</section>
+
 					</div>
-				</div>
-			</div>
-		</div>
-	</header>
 
-	<div id="fh5co-about" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Über mich</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<ul class="info">
-						<li><span class="first-block">Name:</span><span class="second-block">Jannek Haserick</span></li>
-						<li><span class="first-block">Email:</span><span class="second-block">JannekHas@live.de</span></li>
-						<li><span class="first-block">Discord:</span><span class="second-block">jannek</span></li>
-						<li><span class="first-block">Minecraft:</span><span class="second-block">Jannnnek</span></li>
-					</ul>
-				</div>
-				<div class="col-md-8">
-					<h2>Hey!</h2>
-					<p>Mein Name ist Jannek und ich bin ein leidenschaftlicher Minecraft Developer aus Freiburg. Seit über drei Jahren beschäftige ich mich intensiv mit der Programmierung in Minecraft und habe bereits vorher Erfahrungen im Umgang mit Python gesammelt. Während meines Studiums vertiefe ich meine Programmierkenntnisse weiter. An der Universität arbeite ich regelmäßig mit Java und Python, wodurch ich mein Verständnis für diese Sprachen erweitern konnte. Zusätzlich habe ich auch grundlegende Kenntnisse in C++ erworben.</p>
-					<p>Mein Schwerpunkt liegt auf der Entwicklung von Plugins für Minecraft. Ich habe umfangreiche Erfahrung in der Erstellung von benutzerdefinierten Spielinhalten, Optimierung von Spielmechaniken und Implementierung neuer Funktionen. Dabei lege ich großen Wert auf sauberen Code und effiziente Lösungen. In meinem Portfolio finden Sie eine Auswahl meiner bisherigen Projekte. Diese umfassen unter anderem individuelle Spielmodifikationen, Erweiterungen für Server und personalisierte Plugins für bestimmte Spielmechaniken. Als Minecraft Developer bin ich stets bestrebt, die besten Lösungen für die Anforderungen meiner Kunden zu finden und ihre Ideen in die Realität umzusetzen. Ich bin in der Lage, mich schnell in neue Projekte einzuarbeiten und auf individuelle Bedürfnisse einzugehen. Wenn Sie einen engagierten Minecraft Developer suchen, der sowohl über fundierte Kenntnisse in der Minecraft-Programmierung als auch in anderen Sprachen wie Java, Python und C++ verfügt, stehe ich Ihnen gerne zur Verfügung. Lassen Sie uns gemeinsam etwas Großartiges schaffen! Kontaktieren Sie mich gerne, um weitere Informationen zu erhalten oder um über mögliche Zusammenarbeiten zu sprechen. Ich freue mich darauf, von Ihnen zu hören.</p>
-					<p>
-						<ul class="fh5co-social-icons">
-							<li><a href="https://discord.com/users/382273854749409282"><i class="icon-user-plus"></i></a></li>
-							<li><a href="mailto:JannekHas@live.de"><i class="icon-mail2"></i></a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
+				<!-- Footer -->
+				<footer id="footer">
+					<section>
+						<h2>Impressum | Angaben gemäß § 5 TMG</h2>
+						<p>
+							Jannek Haserick<br>
+							Rennweg 37<br>
+							79106 Freiburg im Breisgau<br>
+							Deutschland
+						</p>
+					</section>
+					<section>
+						<h3>Kontakt:</h3>
+						<p>Email: <a href="mailto:JannekHas@live.de">JannekHas@live.de</a></p>
+						<h3>Verantwortlich für den Inhalt:</h3>
+						<p>Jannek Haserick</p>
+					</section>
+					<p class="copyright">© 2025 Jannek Haserick</p>
+				</footer>
 
-	<div id="fh5co-resume" class="fh5co-bg-color">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Erfahrung</h2>
-				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0">
-					<ul class="timeline">
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Server</h3></div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Developer</h3>
-									<span class="company">Yupiter - Juni 2023 - Heute</span>
-								</div>
-								<div class="timeline-body">
-									<p>Aktuell arbeite ich an dem Minecraftserver, Yupiter, des Musikers Yu. Hier bin ich im Developerbereich tätig.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Admin & Developer</h3>
-									<span class="company">Pluna - März 2023 - Juni 2023</span>
-								</div>
-								<div class="timeline-body">
-									<p>Auf Pluna habe ich im Bereich der Administration und der Developer gearbeitet. Leider wurde das Projekt nach 3 Monaten vorerst pausiert.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Content</h3>
-									<span class="company">Nevady - Januar 2023 - März 2023</span>
-								</div>
-								<div class="timeline-body">
-									<p>Nevady habe ich zunächst vor allem durch meine Tätigkeit als Content unterstützt und hierbei eng mit dem Developer zusammengearbeitet. Schnell wurde ich hier zur Leitung des Content-Bereichs um habe einige administrative Aufgaben übernommen</p>
-								</div>
-							</div>
-						</li>
 
-						<br>
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Ausbildung</h3></div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Bachelor</h3>
-									<span class="company">Albert-Ludwigs-Universität Freiburg - 2020 - Heute</span>
-								</div>
-								<div class="timeline-body">
-									<p>Aktuell strebe ich meinen Bachelorabschluss in Embedded Systems Engineering an der Uni Freiburg an.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Bachelor</h3>
-									<span class="company">Universität Konstanz - 2019 - 2020</span>
-								</div>
-								<div class="timeline-body">
-									<p>Ich habe 2 Semester an der Universität Konstanz im Studiengang Finanzmathematik studiert, dieses Studium allerdings nicht fortgesetzt.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Abitur</h3>
-									<span class="company">Rotteck Gymnasium - 2012 - 2018</span>
-								</div>
-								<div class="timeline-body">
-									<p>Ich habe 2018, am Rotteck Gymnasium Freiurg, mein Abitur erfolgreich abgeschlossen.</p>
-								</div>
-							</div>
-						</li>
-			    	</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-	<div id="fh5co-skills" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Skills</h2>
-				</div>
-			</div>
-			<div class="row row-pb-md">
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="95"><span><strong>Java</strong>95%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>Spigot</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="85"><span><strong>Python</strong>85%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="70"><span><strong>MySQL</strong>70%</span></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">Java</span><span class="value-right">95%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width:95%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Spigot</span><span class="value-right">90%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
-						  </div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">Python</span><span class="value-right">85%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">MySql</span><span class="value-right">70%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-striped active" role="progressbar"
-						  aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script>
+			let tempChart;
+			let humChart;
 
-	<div id="fh5co-work" class="fh5co-bg-dark">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Projekte</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://github.com/JannekHas/PlanetInc" class="work" style="background-image: url(images/cover_bg_3.jpg);">
-						<div class="desc">
-							<h3>PlanetInc</h3>
-							<span>Minecraft Spielmodus</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-2.jpg);">
-						<div class="desc">
-							<h3>Project</h3>
-							<span>kommt bald...</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-3.jpg);">
-						<div class="desc">
-							<h3>Project</h3>
-							<span>kommt bald...</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-4.jpg);">
-						<div class="desc">
-							<h3>Project</h3>
-							<span>kommt bald...</span>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div id="fh5co-started" class="fh5co-bg-dark">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Kontaktiere mich!</h2>
-					<p>Du erreichst mich am Besten per Discord oder per Email. Ich freue mich über deine Nachricht!.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+			function timeSince(dateString) {
+				const now = new Date();
+				const then = new Date(dateString);
+				const diff = Math.floor((now - then) / 1000); // Sekunden
+				if (diff < 60) return `vor ${Math.floor(diff)} Sekunden`;
+				if (diff < 3600) return `vor ${Math.floor(diff / 60)} Minuten`;
+				if (diff < 86400) return `vor ${Math.floor(diff / 3600)} Stunden`;
+				return `am ${then.toLocaleDateString()}`;
+			}
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
-	</div>
-	
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="js/jquery.easypiechart.min.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
-	
-	<!-- Main -->
-	<script src="js/main.js"></script>
+			async function loadLatestTemperature() {
+				const res = await fetch("https://api.thingspeak.com/channels/2779992/fields/1.json?api_key=J4CNIE8RS3MOWWRC&results=1");
+				const data = await res.json();
+				if (data.feeds.length > 0) {
+					const latest = data.feeds[0];
+					document.getElementById("temp-value").textContent = parseFloat(latest.field1).toFixed(2) + " °C";
+					document.getElementById("temp-updated").textContent = "Aktualisiert: " + timeSince(latest.created_at);
+					document.getElementById("temp-value2").textContent = parseFloat(latest.field1).toFixed(2) + " °C";
+					document.getElementById("temp-updated2").textContent = "Aktualisiert: " + timeSince(latest.created_at);
+				}
+			}
+
+			async function loadTempChart(count) {
+				const url = `https://api.thingspeak.com/channels/2779992/fields/1.json?api_key=J4CNIE8RS3MOWWRC&results=${count}`;
+				const res = await fetch(url);
+				const data = await res.json();
+				const labels = data.feeds.map(f => new Date(f.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+				const values = data.feeds.map(f => parseFloat(f.field1));
+
+				if (tempChart) {
+					tempChart.data.labels = labels;
+					tempChart.data.datasets[0].data = values;
+					tempChart.update();
+				} else {
+					const ctx = document.getElementById("tempChart").getContext("2d");
+					tempChart = new Chart(ctx, {
+						type: 'line',
+						data: {
+							labels: labels,
+							datasets: [{
+								label: 'Temperatur (°C)',
+								data: values,
+								fill: true,
+								backgroundColor: 'rgba(255, 99, 132, 0.2)',
+								borderColor: 'rgba(255, 99, 132, 1)',
+								tension: 0.2,
+								pointRadius: 0
+							}]
+						},
+						options: {
+							scales: {
+								x: {
+									title: { display: true, text: 'Zeit' },
+									ticks: {
+										autoSkip: true,
+										maxTicksLimit: 10
+									}
+								},
+								y: {
+									title: { display: true, text: '°C' }
+								}
+							}
+						}
+					});
+				}
+			}
+
+			async function loadLatestHum() {
+				const res = await fetch("https://api.thingspeak.com/channels/2779992/fields/2.json?api_key=J4CNIE8RS3MOWWRC&results=1");
+				const data = await res.json();
+				if (data.feeds.length > 0) {
+					const latest = data.feeds[0];
+					document.getElementById("hum-value").textContent = parseFloat(latest.field2).toFixed(2) + " %";
+					document.getElementById("hum-updated").textContent = "Aktualisiert: " + timeSince(latest.created_at);
+					document.getElementById("hum-value2").textContent = parseFloat(latest.field2).toFixed(2) + " %";
+					document.getElementById("hum-updated2").textContent = "Aktualisiert: " + timeSince(latest.created_at);
+				}
+			}
+
+			async function loadHumChart(count) {
+				const url = `https://api.thingspeak.com/channels/2779992/fields/2.json?api_key=J4CNIE8RS3MOWWRC&results=${count}`;
+				const res = await fetch(url);
+				const data = await res.json();
+				const labels = data.feeds.map(f => new Date(f.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+				const values = data.feeds.map(f => parseFloat(f.field2));
+
+				if (humChart) {
+					humChart.data.labels = labels;
+					humChart.data.datasets[0].data = values;
+					humChart.update();
+				} else {
+					const ctx = document.getElementById("humChart").getContext("2d");
+					humChart = new Chart(ctx, {
+						type: 'line',
+						data: {
+							labels: labels,
+							datasets: [{
+								label: 'Relative Luftfeuchtigkeit (%)',
+								data: values,
+								fill: true,
+								backgroundColor: 'rgba(54, 162, 235, 0.2)',
+								borderColor: 'rgba(54, 162, 235, 1)',
+								tension: 0.2,
+								pointRadius: 0
+							}]
+						},
+						options: {
+							scales: {
+								x: {
+									title: { display: true, text: 'Zeit' },
+									ticks: {
+										autoSkip: true,
+										maxTicksLimit: 10
+									}
+								},
+								y: {
+									title: { display: true, text: '%' }
+								}
+							}
+						}
+					});
+				}
+			}
+
+			window.addEventListener("load", () => {
+				loadLatestTemperature();
+				loadTempChart(120);
+				loadLatestHum();
+				loadHumChart(120);
+			});
+		</script>
+
+
 
 	</body>
 </html>
-
